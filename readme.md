@@ -12,17 +12,18 @@
 
 ### Requirements
 Install dependencies
+os, numpy, matplotlib, qaoa_core, adiabatic, hamiltonian, optimizer_module, fourier_heuristic, symmetry_module, concurrent.futures, functools, scipy, qiskit_aer, qiskit, skopt, sklearn, flask, flask_cors, visualization_module, 
 
 ### Execution
 Backend simulation:
 python code/backend/server.py
 
 Frontend Visualization:
-open frontend/index.html in any browser
+open the frontend on http://127.0.0.1:5000
 
 ### Result
 The result is dynamic with different noise profiles.
-
+It can be viewed seperately as only images and a json file in the output folder
 
 ### Our Team
 

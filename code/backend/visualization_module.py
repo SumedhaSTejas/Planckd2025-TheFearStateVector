@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from qaoa_core import qaoa_expectation
 from adiabatic import simulate_continuous_adiabatic
 
-os.makedirs("backend/static", exist_ok=True)
+os.makedirs("output/static", exist_ok=True)
 
 # ---------- Energy Landscape ----------
 def plot_energy_landscape(H_P, H_M, p=1, gamma_range=(0, np.pi), beta_range=(0, np.pi), points=35):
@@ -42,7 +42,7 @@ def plot_energy_landscape(H_P, H_M, p=1, gamma_range=(0, np.pi), beta_range=(0, 
     plt.title(r"QAOA Energy Landscape <C>(γ, β)")
     plt.colorbar(im, label="Expected Cost")
     plt.tight_layout()
-    plt.savefig("backend/static/energy_landscape.png", dpi=120)
+    plt.savefig("output/static/energy_landscape.png", dpi=120)
     plt.close()
 
 
@@ -68,7 +68,7 @@ def plot_correlation_heatmap(corrs, title="RQAOA Correlation Heatmap"):
         plt.ylabel("Qubit i")
     plt.title(title)
     plt.tight_layout()
-    plt.savefig("backend/static/correlation_heatmap.png", dpi=120)
+    plt.savefig("output/static/correlation_heatmap.png", dpi=120)
     plt.close()
 
 
@@ -84,7 +84,7 @@ def plot_noise_vs_ratio(noise_levels, ratios):
     plt.title("Noise Sensitivity of QAOA")
     plt.grid(True)
     plt.tight_layout()
-    plt.savefig("backend/static/noise_sensitivity.png", dpi=120)
+    plt.savefig("output/static/noise_sensitivity.png", dpi=120)
     plt.close()
 
 
@@ -101,7 +101,7 @@ def plot_adiabatic_fidelity(H_P, H_M, T=10.0, steps=200):
     plt.title("Continuous Adiabatic Evolution: Fidelity vs Time")
     plt.grid(True)
     plt.tight_layout()
-    plt.savefig("backend/static/adiabatic_fidelity.png", dpi=120)
+    plt.savefig("output/static/adiabatic_fidelity.png", dpi=120)
     plt.close()
 
 
@@ -120,7 +120,7 @@ def plot_qaoa_vs_tqa(p_values, ratios_qaoa, ratios_tqa):
     plt.grid(True)
     plt.legend()
     plt.tight_layout()
-    plt.savefig("backend/static/qaoa_vs_tqa.png", dpi=120)
+    plt.savefig("output/static/qaoa_vs_tqa.png", dpi=120)
     plt.close()
 
 
@@ -140,5 +140,5 @@ def plot_param_schedules(gammas, betas, title="Optimized parameter schedules"):
     plt.grid(True)
     plt.legend()
     plt.tight_layout()
-    plt.savefig("backend/static/params_schedule.png", dpi=120)
+    plt.savefig("output/static/params_schedule.png", dpi=120)
     plt.close()

@@ -1,7 +1,7 @@
 {
   "status": "done",
   "best_ratio": 0.9999999999076775,
-  "execution_time": 29.32075595855713,
+  "execution_time": 35.75787281990051,
   "optimizer": "Hybrid (best of COBYLA/NM/Bayesian)",
   "performance_ratios": [
     0.9999999755265231,

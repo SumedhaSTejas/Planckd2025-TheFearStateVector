@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     Object.entries(map).forEach(([k, v]) => {
       const el = document.getElementById(v);
-      if (el && data.plots[k]) el.src = `${BACKEND}/backend/static/${data.plots[k]}?t=${Date.now()}`;
+      if (el && data.plots[k]) el.src = `${BACKEND}/../output/static/${data.plots[k]}?t=${Date.now()}`;
     });
   }
 

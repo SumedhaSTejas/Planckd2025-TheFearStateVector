@@ -16,17 +16,22 @@ from qaoa_core import qaoa_expectation
 from adiabatic import tqa_params
 
 # ---------------------------------------------------------------------
+# PATH SETUP — handles the correct directory for output outside /code
+
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))  # root above /code
+BACKEND_STATIC_DIR = os.path.join(BASE_DIR, "output", "static")
+os.makedirs(BACKEND_STATIC_DIR, exist_ok=True)
+
+RESULT_FILE = os.path.join(BACKEND_STATIC_DIR, "results.json")
+
+# ---------------------------------------------------------------------
 
 app = Flask(
     __name__,
-    static_folder="../frontend",   # frontend folder
-    static_url_path=""             # serve them at root
+    static_folder="../frontend",  # Serve frontend folder
+    static_url_path=""            # Available at root
 )
 CORS(app, resources={r"/*": {"origins": "*"}})
-
-BACKEND_STATIC_DIR = os.path.join("code", "backend", "static")
-RESULT_FILE = os.path.join(BACKEND_STATIC_DIR, "results.json")
-os.makedirs(BACKEND_STATIC_DIR, exist_ok=True)
 
 is_computing = False
 lock = threading.Lock()
@@ -36,6 +41,7 @@ lock = threading.Lock()
 def compute_results():
     """Main QAOA + visualization run."""
     try:
+        # Cleanup old files
         for f in os.listdir(BACKEND_STATIC_DIR):
             fp = os.path.join(BACKEND_STATIC_DIR, f)
             if os.path.isfile(fp) or os.path.islink(fp):
@@ -78,12 +84,13 @@ def compute_results():
         base_ratio = ratios_qaoa[-1]
         noisy_ratios = [max(0.0, base_ratio * (1 - 1.5 * nl)) for nl in noise_levels]
 
-        # --- generate plots ---
+        # --- generate plots (all saved to BACKEND_STATIC_DIR) ---
         plot_energy_landscape(H_P, H_M, p=1)
         plot_correlation_heatmap(corrs_clean)
         plot_noise_vs_ratio(noise_levels, noisy_ratios)
         plot_adiabatic_fidelity(H_P, H_M, T=10.0, steps=300)
         plot_qaoa_vs_tqa(p_values, ratios_qaoa, ratios_tqa)
+
         if best_params_for_plot is not None:
             p = 3
             gammas = best_params_for_plot[:p]
@@ -119,6 +126,7 @@ def compute_results():
 
         with open(RESULT_FILE, "w", encoding="utf-8") as f:
             json.dump(result, f, indent=2)
+
         return result
 
     except Exception as e:
@@ -134,9 +142,11 @@ def compute_results():
 def index():
     return send_from_directory("../frontend", "index.html")
 
-@app.route("/backend/static/<path:filename>")
+@app.route("/output/static/<path:filename>")
 def serve_backend_static(filename):
-    return send_from_directory("static", filename)
+    """Serve images and results from /output/static (outside /code)."""
+    abs_path = os.path.abspath(os.path.join(BACKEND_STATIC_DIR, filename))
+    return send_from_directory(BACKEND_STATIC_DIR, os.path.basename(abs_path))
 
 @app.route("/results", methods=["GET"])
 def results():

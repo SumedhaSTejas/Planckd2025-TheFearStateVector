@@ -12,7 +12,7 @@
 
 ### Requirements
 Install dependencies
-os, numpy, matplotlib, qaoa_core, adiabatic, hamiltonian, optimizer_module, fourier_heuristic, symmetry_module, concurrent.futures, functools, scipy, qiskit_aer, qiskit, skopt, sklearn, flask, flask_cors, visualization_module, 
+os, numpy, matplotlib, qaoa_core, adiabatic, hamiltonian, optimizer_module, fourier_heuristic, symmetry_module, concurrent, functools, scipy, qiskit_aer, qiskit, skopt, sklearn, flask, flask_cors, visualization_module, 
 
 ### Execution
 Backend simulation:

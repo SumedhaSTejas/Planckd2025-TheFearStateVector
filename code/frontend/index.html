@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>QAOA Simulation Results</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="container">
+    <h1>Quantum Approximate Optimization — Triangle Max-Cut</h1>
+
+    <div style="text-align:center; margin:20px 0;">
+      <button id="runButton" style="padding:10px 25px; font-size:16px; cursor:pointer;">
+        ▶ Run Simulation
+      </button>
+    </div>
+
+    <div class="result-box">
+      <h2>Optimization Results:</h2>
+      <pre id="summary">Click "Run Simulation" to start computation.</pre>
+    </div>
+
+    <!-- Charts Section -->
+    <div class="chart-section">
+      <h3 style="text-align:center; color:#ccc;">QAOA Ratios</h3>
+      <canvas id="qaoaChart"></canvas>
+
+      <h3 style="text-align:center; color:#ccc; margin-top:30px;">TQA Ratios</h3>
+      <canvas id="tqaChart"></canvas>
+
+      <h3 style="text-align:center; color:#ccc; margin-top:30px;">Optimizer Performance Comparison</h3>
+      <canvas id="optimizerChart"></canvas>
+    </div>
+
+    <h2>Saved Visualizations</h2>
+    <div class="plots">
+      <figure><img id="energyPlot" alt="Energy Landscape"/><figcaption>Energy Landscape ⟨C⟩(γ,β)</figcaption></figure>
+      <figure><img id="fidelityPlot" alt="Adiabatic Fidelity"/><figcaption>Adiabatic Fidelity vs Time</figcaption></figure>
+      <figure><img id="qaoaTqaPlot" alt="QAOA vs TQA"/><figcaption>QAOA vs TQA</figcaption></figure>
+      <figure><img id="paramsPlot" alt="Parameter Schedules"/><figcaption>γₖ and βₖ Schedules</figcaption></figure>
+      <figure><img id="corrPlot" alt="Correlation Heatmap"/><figcaption>RQAOA Correlation Heatmap</figcaption></figure>
+      <figure><img id="noisePlot" alt="Noise Sensitivity"/><figcaption>Noise Sensitivity</figcaption></figure>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

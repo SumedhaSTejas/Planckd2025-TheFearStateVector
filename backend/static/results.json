@@ -1,0 +1,39 @@
+{
+  "status": "done",
+  "best_ratio": 0.9999999999076775,
+  "execution_time": 16.23527455329895,
+  "optimizer": "Hybrid (best of COBYLA/NM/Bayesian)",
+  "performance_ratios": [
+    0.9999999755265231,
+    0.9999999994252442,
+    0.9999999999076775
+  ],
+  "tqa_ratios": [
+    0.7499999999999997,
+    0.2928738347606785,
+    0.5865029547348736
+  ],
+  "p_values": [
+    1,
+    2,
+    3
+  ],
+  "optimizer_labels": [
+    "COBYLA",
+    "Nelder-Mead",
+    "Bayesian"
+  ],
+  "optimizer_scores": [
+    0.9999999308901015,
+    0.9999999999076775,
+    0.8527334153994218
+  ],
+  "plots": {
+    "energy_landscape": "energy_landscape.png",
+    "correlation_heatmap": "correlation_heatmap.png",
+    "noise_sensitivity": "noise_sensitivity.png",
+    "adiabatic_fidelity": "adiabatic_fidelity.png",
+    "qaoa_vs_tqa": "qaoa_vs_tqa.png",
+    "params_schedule": "params_schedule.png"
+  }
+}

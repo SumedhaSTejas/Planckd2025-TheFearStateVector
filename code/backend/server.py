@@ -24,7 +24,7 @@ app = Flask(
 )
 CORS(app, resources={r"/*": {"origins": "*"}})
 
-BACKEND_STATIC_DIR = os.path.join("backend", "static")
+BACKEND_STATIC_DIR = os.path.join("code", "backend", "static")
 RESULT_FILE = os.path.join(BACKEND_STATIC_DIR, "results.json")
 os.makedirs(BACKEND_STATIC_DIR, exist_ok=True)
 
